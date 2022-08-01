@@ -2,6 +2,7 @@
 
 
 
+```text
 echo "# rockchip_npu" >> README.md
 git init
 git add README.md
@@ -13,3 +14,5 @@ git push -u origin main
 git remote add origin git@github.com:maxminx/rockchip_npu.git
 git branch -M main
 git push -u origin main
+```
+
