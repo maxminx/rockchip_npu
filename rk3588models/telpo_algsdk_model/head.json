@@ -1,0 +1,15 @@
+{
+    "modelDet":"yolov5s_head_1.0.rknn",
+
+    "totalLabels":2,
+
+    "labelName":[],
+
+    "threshObj":0.1,
+
+    "threshDet":0.3,
+
+    "threshNMS":0.3,
+
+    "anchors":[10.0, 13.0, 16.0, 30.0, 33.0, 23.0, 30.0, 61.0, 62.0, 45.0, 59.0, 119.0, 116.0, 90.0, 156.0, 198.0, 373.0, 326.0]
+}
