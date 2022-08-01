@@ -1,4 +1,6 @@
-# 天波AI算法库telpo_algsdk介绍
+# AI算法库telpo_algsdk介绍
+
+​		为rk3588，rk3566，rk3568，rk1109等瑞芯微带有npu的芯片提供统一的调用npu的接口API，实现的模型主要是检测yolo和分类shufflenet网络。通过源码编译出动态库libtelpoalgsdk.so
 
 ## 1：基本信息
 
