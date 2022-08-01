@@ -1,4 +1,0 @@
-/home/sda/sun/mydir/2-projects/arm/telpo_AlgSDK3/build/CMakeFiles/telpoalgsdk.dir
-/home/sda/sun/mydir/2-projects/arm/telpo_AlgSDK3/build/CMakeFiles/demo_test_image.dir
-/home/sda/sun/mydir/2-projects/arm/telpo_AlgSDK3/build/CMakeFiles/edit_cache.dir
-/home/sda/sun/mydir/2-projects/arm/telpo_AlgSDK3/build/CMakeFiles/rebuild_cache.dir
