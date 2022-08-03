@@ -1,0 +1,3 @@
+/home/sun/myprojects/mygithub/rockchip_npu/telpo_AlgSDK_rk1109_intelif/build/CMakeFiles/telpoalgsdk.dir
+/home/sun/myprojects/mygithub/rockchip_npu/telpo_AlgSDK_rk1109_intelif/build/CMakeFiles/edit_cache.dir
+/home/sun/myprojects/mygithub/rockchip_npu/telpo_AlgSDK_rk1109_intelif/build/CMakeFiles/rebuild_cache.dir
