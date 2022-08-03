@@ -1,0 +1,23 @@
+{
+    "modelDet":"yolov5s_face_1.0.rknn",
+
+    "totalLabels":1,
+
+    "labelName":[],
+
+    "threshObj":0.3,
+
+    "threshDet":0.3,
+
+    "threshNMS":0.5,
+
+    "anchors":[4.01953125, 5.1953125, 6.66796875, 8.234375, 10.609375, 13.5546875, 15.8984375, 19.8125, 24.265625, 30.390625, 40.03125, 52.1875, 64.6875, 83.625, 114.0, 148.625, 224.5, 275.0],
+
+    "modelCls":"shuffleNet_mask_1.0.rknn",
+  
+    "threshCls":0.6,
+
+    "clsNetH":112,
+
+    "clsNetW":112
+}
