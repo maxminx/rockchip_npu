@@ -1,0 +1,4 @@
+/home/sda/sun/mydir/2-projects/mygithub/rockchip_npu/telpo_AlgSDK_rk1126/build/CMakeFiles/telpoalgsdk.dir
+/home/sda/sun/mydir/2-projects/mygithub/rockchip_npu/telpo_AlgSDK_rk1126/build/CMakeFiles/demo_test_image.dir
+/home/sda/sun/mydir/2-projects/mygithub/rockchip_npu/telpo_AlgSDK_rk1126/build/CMakeFiles/edit_cache.dir
+/home/sda/sun/mydir/2-projects/mygithub/rockchip_npu/telpo_AlgSDK_rk1126/build/CMakeFiles/rebuild_cache.dir

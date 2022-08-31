@@ -33,8 +33,28 @@ namespace telpo_algsdk{
                 impl_ = NoHat_det::getInstance();
                 break;
 
+            case TELPO_ALGSDK_SMOKER:
+                impl_ = Smoker_det::getInstance();
+                break;
+
+            case TELPO_ALGSDK_CALLER:
+                impl_ = Caller_det::getInstance();
+                break;
+
             case TELPO_ALGSDK_CAR:
                 impl_ = Car_det::getInstance();
+                break;
+
+            case TELPO_ALGSDK_EBIKE:
+                impl_ = Ebike_det::getInstance();
+                break;
+
+            case TELPO_ALGSDK_FIRE:
+                impl_ = Fire_det::getInstance();
+                break;
+
+            case TELPO_ALGSDK_SMOG:
+                impl_ = Smog_det::getInstance();
                 break;
             
             default:

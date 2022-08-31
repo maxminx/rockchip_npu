@@ -1368,11 +1368,19 @@ namespace telpo_algsdk{
 
     telpo_ret_t Fire_det::process(cv::Mat &img, std::vector<telpo_object_t> &retObjects)
     {
-        if(telp_det.infer(img, retObjects)!=0)
+        std::vector<telpo_object_t> tmp_obj;
+        if(telp_det.infer(img, tmp_obj)!=0)
         {
             std::cout<<"Fire_det process fail!\n";
             return TELPO_RET_FAIL;
         }
+
+        for(auto item:tmp_obj)
+        {
+            if(item.label != 0) continue;
+            retObjects.push_back(item);
+        }
+
         return  TELPO_RET_SUCCESS;
     }
 
@@ -1415,11 +1423,19 @@ namespace telpo_algsdk{
 
     telpo_ret_t Smog_det::process(cv::Mat &img, std::vector<telpo_object_t> &retObjects)
     {
-        if(telp_det.infer(img, retObjects)!=0)
+        std::vector<telpo_object_t> tmp_obj;
+        if(telp_det.infer(img, tmp_obj)!=0)
         {
             std::cout<<"Smog_det process fail!\n";
             return TELPO_RET_FAIL;
         }
+
+        for(auto item:tmp_obj)
+        {
+            if(item.label != 1) continue;
+            retObjects.push_back(item);
+        }
+
         return  TELPO_RET_SUCCESS;
     }
 

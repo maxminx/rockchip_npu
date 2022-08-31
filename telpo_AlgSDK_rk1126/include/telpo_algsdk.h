@@ -28,19 +28,21 @@ typedef enum{
  * @details: 定义模型算法应用
  */
 typedef enum {
-    TELPO_ALGSDK_PERSON    = 0,     //detect person
-    TELPO_ALGSDK_FACE      = 1,     //detect face 
+    /*********人相关算法*********/
+    TELPO_ALGSDK_PERSON    = 0,     //detect person人形检测
+    TELPO_ALGSDK_FACE      = 1,     //detect face人脸检测
     TELPO_ALGSDK_NOMASK    = 2,     //detect face without mask检测没戴口罩的人脸
-    TELPO_ALGSDK_HEAD      = 3,     //detect head
-    TELPO_ALGSDK_NOHAT     = 4,     //detect head without hat检测没戴帽子的人头(安全帽、厨师帽)
+    TELPO_ALGSDK_HEAD      = 3,     //detect head人头检测
+    TELPO_ALGSDK_NOHAT     = 4,     //detect head without hat检测没戴帽子的人头(安全帽)
     TELPO_ALGSDK_SMOKER    = 5,     //detect smoker吸烟人
-    TELPO_ALGSDK_CALLER    = 6,     //detect caller打电话人
-    
-    TELPO_ALGSDK_CAR       = 10,    //detect car
+    TELPO_ALGSDK_CALLER    = 6,     //detect caller打电话人(还没实现)
+    /*********车相关算法*********/
+    TELPO_ALGSDK_CAR       = 10,    //detect car机动车检测
     TELPO_ALGSDK_EBIKE     = 11,    //detect eBike电动车
-
-    TELPO_ALGSDK_FIRE      = 20,    //detect fire
-    TELPO_ALGSDK_SMOG     = 21,    //detect smog烟雾
+    TELPO_ALGSDK_FJDC      = 12,    //非机动车检测(还没实现)
+    /*********其他*********/
+    TELPO_ALGSDK_FIRE      = 20,    //detect fire明火检测
+    TELPO_ALGSDK_SMOG      = 21,    //detect smog烟雾检测
 }telpo_algsdk_t;
 
 /**
@@ -63,7 +65,7 @@ typedef struct telpo_object_t
     /* data */
     telpo_rect_t box;
     float prob;
-    int label=1000;
+    int label=-1;
 }telpo_object_t;
 
 /**

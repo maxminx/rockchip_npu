@@ -50,12 +50,28 @@ int main(int argc,  char** argv)
         algsdk_t = TELPO_ALGSDK_NOHAT;
         break;
 
+    case 5:
+        algsdk_t = TELPO_ALGSDK_SMOKER;
+        break;
+
+    case 6:
+        algsdk_t = TELPO_ALGSDK_CALLER;
+        break;
+
     case 10:
         algsdk_t = TELPO_ALGSDK_CAR;
         break;
 
     case 11:
         algsdk_t = TELPO_ALGSDK_EBIKE;
+        break;
+
+    case 20:
+        algsdk_t = TELPO_ALGSDK_FIRE;
+        break;
+
+    case 21:
+        algsdk_t = TELPO_ALGSDK_SMOG;
         break;
     
     default:

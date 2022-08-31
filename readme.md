@@ -1,72 +1,70 @@
 # AI算法库telpo_algsdk介绍
 
-​		为rk3588，rk3566，rk3568，rk1109等瑞芯微带有npu的芯片提供统一的调用npu的接口API，实现的模型主要是检测yolo和分类shufflenet网络。通过源码编译出动态库libtelpoalgsdk.so
+​		为rk3588，rk3566，rk3568，rk1109, rk1126等瑞芯微带有npu的芯片提供统一调用npu的接口API，目前实现的模型主要是检测yolo和分类shufflenet网络。
 
 ## 1：基本信息
 
-当前库版本：1.0
+当前库版本：1.1
 
-编辑日期：2022年 07月 26日 
+最初编辑日期：2022年 07月 26日 
+
+最新修改日期：2022年 08月 31日 
+
+主要修改内容：新增算法功能, 以及相应资料归档在nextcloud网盘上
 
 编辑人：孙永聪
 
-库位置：
+库位置：http://192.168.5.71:8080/s/6Hc77kwpkdc9gba
 
-依赖：opencv
+依赖：opencv, nlohmann
 
-目录结构如下：
+SDK库目录结构如下：
 
 ```text
 .
-├── demo_test_image
+├── 3rdparty
+│   ├── glog
+│   ├── librknn_api
+│   ├── nlohmann
+│   └── opencv
+├── a.out
+├── bin
+│   └── demo_test_image
+├── CMakeLists.txt
 ├── demo_test_image.cpp
+├── demo_test_rtsp.cpp
 ├── include
 │   └── telpo_algsdk.h
 ├── lib
-│   ├── libtelpoalgsdk.so
+│   ├── libtelpoalgsdk.so -> libtelpoalgsdk.so.1.0
 │   └── libtelpoalgsdk.so.1.0
-├── opencv
-│   ├── bin
-│   ├── include
-│   ├── lib
-│   └── share
-├── readme.md
-├── telpo_algsdk_model
-│   ├── bus.jpg
-│   ├── car.json
-│   ├── face.jpg
-│   ├── face.json
-│   ├── hat.json
-│   ├── head.json
-│   ├── helmet.jpg
-│   ├── mask3.jpg
-│   ├── mask.jpg
-│   ├── nohat.json
-│   ├── nomask.json
-│   ├── person.json
-│   ├── readme.txt
-│   ├── result.jpg
-│   ├── set_env.sh
-│   ├── test.jpg
-│   ├── yolov5s_face_1.0.rknn
-│   ├── yolov5s_head_1.0.rknn
-│   ├── yolov5s_mycoco.rknn
-│   └── yolov5s_relu_rv1109_rv1126_out_opt.rknn
-└── test.jpg
+├── result.jpg
+├── test.cpp
+├── test.jpg
+├── test_json.cpp
 ```
 
-## 2：功能
+
+
+## 2：算法功能
 
 - [x] 人形检测
 - [x] 人脸检测
-- [ ] 检测未戴口罩的人脸
-- [ ] 人头检测
-- [ ] 检测未戴安全帽的人头
-- [ ] 车辆检测
-- [ ] 吸烟检测
+- [x] 检测未戴口罩的人脸
+- [x] 人头检测
+- [x] 检测未戴安全帽的人头
+- [ ] 检测未穿反光衣的人
+- [x] 机动车检测
+- [ ] 非机动车检测
+- [x] 电动车进电梯检测
+- [x] 吸烟检测
 - [ ] 打电话检测
+- [x] 烟雾检测
+- [x] 明火检测
 
-后续完成的算法应用都会以如下形式出现在telpo_algsdk.h头文件的telpo_algsdk_t中，供调用者查看。
+后续完成的算法应用都会以如下形式出现在telpo_algsdk.h头文件的telpo_algsdk_t中，供查看。
+
+*注意---以TELPO_ALGSDK_XXX形式定义算法应用, 相应的json配置文件形式为xxx.json
 
 ```cpp
 /**
@@ -74,19 +72,27 @@
  * @details: 定义模型算法应用
  */
 typedef enum {
-    TELPO_ALGSDK_PERSON    = 0,    //detect person
-    TELPO_ALGSDK_FACE      = 1,    //detect face 
-    TELPO_ALGSDK_NOMASK    = 2,    //detect face without mask 
-    TELPO_ALGSDK_HEAD      = 3,    //detect head
-    TELPO_ALGSDK_NOHAT     = 4,    //detect head without hat
-    
-    TELPO_ALGSDK_CAR       = 10,   //detect car
-} telpo_algsdk_t;
+    /*********人相关算法*********/
+    TELPO_ALGSDK_PERSON    = 0,     //detect person人形检测
+    TELPO_ALGSDK_FACE      = 1,     //detect face人脸检测
+    TELPO_ALGSDK_NOMASK    = 2,     //detect face without mask检测没戴口罩的人脸
+    TELPO_ALGSDK_HEAD      = 3,     //detect head人头检测
+    TELPO_ALGSDK_NOHAT     = 4,     //detect head without hat检测没戴帽子的人头(安全帽)
+    TELPO_ALGSDK_SMOKER    = 5,     //detect smoker吸烟人
+    TELPO_ALGSDK_CALLER    = 6,     //detect caller打电话人(还没实现)
+    /*********车相关算法*********/
+    TELPO_ALGSDK_CAR       = 10,    //detect car机动车检测
+    TELPO_ALGSDK_EBIKE     = 11,    //detect eBike电动车
+    TELPO_ALGSDK_FJDC      = 12,    //非机动车检测(还没实现)
+    /*********其他*********/
+    TELPO_ALGSDK_FIRE      = 20,    //detect fire明火检测
+    TELPO_ALGSDK_SMOG      = 21,    //detect smog烟雾检测
+}telpo_algsdk_t;
 ```
 
 
 
-## 3：使用方法示例
+## 3：使用示例
 
 一：基本数据类型介绍
 
@@ -113,7 +119,7 @@ typedef enum {
       /* data */
       telpo_rect_t box;
       float prob;
-      int label=1000;
+      int label=-1;
   }telpo_object_t;
   ```
 
@@ -141,13 +147,9 @@ cv::Mat img = cv::imread(img_path);//根据现实情况获取img。这里是根�
 algsdk.process(img, retObjects);
 ```
 
-***注意事项:
-
-一个算法只需要一次初始化就可以重复调用推理过程。初始化需要消耗较长时间，千万别重复调用初始化。
 
 
-
-## 4：demo运行演示
+## 4：demo运行
 
 一：在Linux系统中设置环境变量TELPO_ALGSDK_MODEL，为算法应用找到模型和配置文件的路径
 
@@ -184,19 +186,7 @@ switch (std::stoi(argv[1]))
     case 2:
         algsdk_t = TELPO_ALGSDK_NOMASK;
         break;
-
-    case 3:
-        algsdk_t = TELPO_ALGSDK_HEAD;
-        break;
-
-    case 4:
-        algsdk_t = TELPO_ALGSDK_NOHAT;
-        break;
-
-    case 10:
-        algsdk_t = TELPO_ALGSDK_CAR;
-        break;
-    
+    //等等
     default:
         std::cout<<"arguments errors\n";
         break;
@@ -205,7 +195,7 @@ switch (std::stoi(argv[1]))
 
 ## 5：配置文件解析
 
-以***.json文件出现，供使用者方便替换模型和设置阈值参数，face.json 如下：
+以xxx.json文件出现，方便更换模型和设置参数。以face.json说明如下：
 
 ```json
 {
@@ -233,6 +223,30 @@ switch (std::stoi(argv[1]))
 - threshObj，可以设置的范围0~1，阈值越大检测出的框越少 
 - threshDet，可以设置的范围0~1，阈值越大检测出的框越少 
 - threshNMS，可以设置的范围0~1，阈值越大检测出的框越多
+- anchors, 需要和rknn模型配套
+
+## 6 ：相关资料归档
+
+为了方便共享rknn模型、SDK库、查看测试算法的输出图片等，搭建了nextcloud网盘服务器。
+
+内网访问地址: http://192.168.5.71:8080/login
+
+账号/密码:telpo
+
+
+一：RKNN模型
+
+![avatar](md_imgs/rkmodels.png)
+
+二：SDK库
+
+![avatar](md_imgs/rkalgsdk.png)
+
+三：算法测试输出的效果图片
+
+![avatar](md_imgs/rktest.png)
+
+
 
 
 
