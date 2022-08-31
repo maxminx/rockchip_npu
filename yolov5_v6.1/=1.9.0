@@ -1,0 +1,8 @@
+Looking in indexes: https://pypi.org/simple, https://pypi.ngc.nvidia.com
+Collecting onnx
+  Downloading onnx-1.11.0-cp38-cp38-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (12.8 MB)
+Requirement already satisfied: typing-extensions>=3.6.2.1 in /home/sun/opt/anaconda3/envs/py38/lib/python3.8/site-packages (from onnx) (4.2.0)
+Requirement already satisfied: protobuf>=3.12.2 in /home/sun/opt/anaconda3/envs/py38/lib/python3.8/site-packages (from onnx) (3.20.1)
+Requirement already satisfied: numpy>=1.16.6 in /home/sun/opt/anaconda3/envs/py38/lib/python3.8/site-packages (from onnx) (1.22.3)
+Installing collected packages: onnx
+Successfully installed onnx-1.11.0
